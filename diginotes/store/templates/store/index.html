@@ -1,0 +1,31 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<!-- <h1>index.html</h1> -->
+
+<div class="row">
+{% for product in products %}
+
+
+<div class="col-3 mx-4 mt-4">
+    <div class="card" style="width: 18rem;">
+        <img src="{{product.thumbnail.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">
+              save {{product.price}}%
+              <br>
+              Rs. {{product.price}}
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+</div>
+
+{% endfor %}
+</div>
+    
+
+
+{% endblock %}
