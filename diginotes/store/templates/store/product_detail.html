@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+{% load store_tags %}
+{% block content %}
+
+<br>
+<div class="container">
+    <div class="mt-2 p-4">
+
+        <!-- row -->
+        <div class="row">
+            <!-- div  col 1 for image-->
+            <div class="col">
+                <div class="p-4">
+                    <img class="img-fluid shadow" src="{{product.thumbnail.url}}" alt="">
+                </div>
+            </div>
+
+            <!-- copl 2 for details  -->
+            <div class="col shadow-sm">
+                <h2 class="display-5">{{product.name}}</h2>
+                <p>Category: {{product.category}}</p>
+                <h3><del>Rs: {{product.price}}</del> &nbsp;Rs. {% sale_price product.price product.discount %}</h3>
+                <h2>Save: {{product.discount}}%</h2>
+                <div class="m-4 p-3">
+                    <a href="/product/{{product.slug}}" class="btn border btn-dark btn-block m-0">Buy Now</a>
+                  </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="m-2 p-4 shadow-sm">
+                <h3>Description : </h3>
+                <p>{{product.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

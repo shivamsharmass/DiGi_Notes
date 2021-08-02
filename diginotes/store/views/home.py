@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import FormView
 from store.models import Category, Product
 from math import ceil
+from django.views.generic import ListView
 
 
 #from django.views import View
@@ -11,12 +12,25 @@ from math import ceil
 
 
 
-def home(request):
-    products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, template_name='store/index.html', context=context)
+class HomeView(ListView):
+    model = Product
+    template_name = 'store/index.html'
+    context_object_name = 'products'
+
+    def get_context_data(self):
+        category_pk = self.request.GET.get("category")
+        categories = Category.objects.all()
+        if category_pk:
+            products = Product.objects.filter(category= category_pk)
+            category_pk = int(category_pk)
+        else:
+            products = Product.objects.all()
+        context = {
+            'categories' : categories,
+            'products' : products,
+            'active_category' : category_pk
+            }
+        return context
     
 def searchMatch(query, item):
     if query in item.name.lower() or item.category.lower() or item.descreption.lower() or item.slug.lower() or item.price.lower():
@@ -52,3 +66,5 @@ def contactus(request):
 
 def enquiry(request):
     return HttpResponse("enquiry Page")
+
+
