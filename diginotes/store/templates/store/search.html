@@ -1,19 +1,6 @@
+{% extends 'store/base.html' %} 
 {% load store_tags %}
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-
-{% load staticfiles %}
-{% extends 'store/base.html' %}
 
 {% block content %}
 
@@ -40,16 +27,14 @@
 
 {% endfor %}
 </div>
-{% block js %}
+{% block script %}
 
-<!-- <script type="text/javascript">
-{% if msg|length != 0 %}
+<script type="text/javascript">
+if (msg|length != 0) {
 alert('{{msg}}');
 window.location.href = "/"
-{% endif %}
-</script> -->
+}
+</script>
+{% endblock %}
 
-{% endjs %}
-
-</body>
-</html>
+{% endblock %}

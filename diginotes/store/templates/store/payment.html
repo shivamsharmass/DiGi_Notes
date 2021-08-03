@@ -4,13 +4,26 @@
 
 <br>
 <div class="container">
-    <form method="POST" class="border p-3 m-3 rounded">
-        {%csrf_token%}
-        {{form.as_p}}
-        <br>
-        <input type="submit" value="Login">
-
-    </form>
+    <p class="display-4">Payment Page</p>
+    {{user}}
+    {{product}}
+    {{order}}
 </div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    window.onload = function(){
+        var options = {
+            "key": "rzp_test_1ykZ1WTBVrQF5T",
+            "name": "Payment Options",
+            "description": "Descreption of the code",
+            "image": "https://example.com/your_logo",
+            "order_id": '{{order.id}}',
+            "callback_url" : "http://localhost:8000/payment/verify",
+}
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    }
+</script>
 
 {% endblock %}

@@ -4,12 +4,13 @@ from django.views.generic import FormView
 from store.models import Category, Product
 from math import ceil
 from django.views.generic import ListView
+from django import template
 
 
 #from django.views import View
 
 # Create your views here.
-
+register = template.Library() 
 
 
 class HomeView(ListView):
@@ -31,7 +32,9 @@ class HomeView(ListView):
             'active_category' : category_pk
             }
         return context
-    
+
+     
+@register.simple_tag
 def searchMatch(query, item):
     if query in item.name.lower() or item.category.lower() or item.descreption.lower() or item.slug.lower() or item.price.lower():
         return True
@@ -44,7 +47,7 @@ def search(request):
     catprods= Product.objects.values('category')
     cats = {item['category'] for item in catprods}
     for cat in cats:
-        prodtemp = Product.filter(Category=cat)
+        prodtemp = Product.objects.filter(category=cat)
         prod = [item for item in prodtemp if searchMatch(query, item)]
         n = len(prod)
         nSlides = n // 4 + ceil((n / 4) - (n // 4))

@@ -19,6 +19,7 @@ from .views.home import HomeView, about, contactus, enquiry, search
 from .views.auth import  SignupView, LoginView, logout_view
 from .views.details import ProductDetailView
 from .views.checkout import checkout
+from .views.payment import create_payment
 
 urlpatterns = [
     
@@ -32,5 +33,5 @@ urlpatterns = [
     path('logout', logout_view, name='logout'),
     path('product/<str:slug>', ProductDetailView.as_view()),
     path('checkout/<str:slug>', checkout, name='checkout'),
-
+    path('payment/<str:slug>', create_payment, name='creat_payment'),
 ]
