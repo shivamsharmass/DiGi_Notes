@@ -19,7 +19,7 @@ class HomeView(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = 'products'
-    paginate_by = 8
+    paginate_by = 4
 
 
     def get_context_data(self):
@@ -29,9 +29,9 @@ class HomeView(ListView):
         category_pk = self.request.GET.get("category")
         categories = Category.objects.all()
         if category_pk:
-            products = Product.objects.filter(category= category_pk)
+            products = Product.objects.filter(category= category_pk, active= True)
         else:
-            products = Product.objects.all()
+            products = Product.objects.filter(active=True)
         paginator = Paginator(products , self.paginate_by)
         return {
             'categories' : categories,
