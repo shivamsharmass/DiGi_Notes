@@ -1,40 +1,62 @@
-{% extends 'store/base.html' %} 
+{% extends 'store/base.html' %}
 {% load store_tags %}
-
-
 {% block content %}
 
+<div class="container-fluid">
 <!-- <h1>index.html</h1> -->
 
-<div class="row">
-{% for product in products %}
+<div class="row mt-3">
 
-
-<div class="col-3 mx-4 mt-4">
-    <div class="card" style="width: 18rem;">
-        <img src="{{product.thumbnail.url}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          <p class="card-text">
-              save {{product.price}}%
-              <br>
-              Rs. {{product.price}}
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+  <div id="categories" class="col-2">
+    
+    <div class="list-group">
+      <a class="list-group-item list-group-item-action {% get_active_class active_category '' %}" href="/">All Categories</a>
+      {% for category in categories %}
+        <a class="list-group-item list-group-item-action {% get_active_class active_category category.pk %}" href="?category={{category.pk}}">{{category.title}}</a>
+      {% endfor %}
+    </div>        
+  
+  </div>
+  
+  <div id="products" class="col">
+    <div class="row">
+      {% for product in products %}
+      
+      <div class="col-3 mx-4">
+          <div class="card" style="width: 18rem;">
+              <img src="{{product.thumbnail.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                {{product.description}}
+                <p class="card-text">
+                    save {{product.discount}}%
+                    <br>
+                    <span> <del>Rs. {{product.price}}</del></span> 
+                    <span>Rs. {% sale_price product.price product.discount %}</span> 
+                </p>
+                
+              </div>
+              <div class="card-footer d-grid p-0">
+                <a href="/product/{{product.slug}}" class="btn border btn-light btn-block m-0">Show More</a>
+              </div>
+            </div>
       </div>
-</div>
+      
+      {% endfor %}
+      </div>
+  
+  </div>
+      
 
-{% endfor %}
 </div>
-{% block script %}
-
-<script type="text/javascript">
-if (msg|length != 0) {
-alert('{{msg}}');
-window.location.href = "/"
-}
-</script>
 {% endblock %}
 
-{% endblock %}
+{% block js %}
+<script>
+
+// {% if msg|length != 0 %}
+// alert('{{msg}}');
+// window.location.href = "/"
+// {% endif %}
+ </script>
+ {% endblock %}

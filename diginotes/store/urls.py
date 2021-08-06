@@ -19,13 +19,14 @@ from .views.home import HomeView, about, contactus, enquiry, search
 from .views.auth import  SignupView, LoginView, logout_view
 from .views.details import ProductDetailView
 from .views.checkout import checkout
-from .views.payment import create_payment
+from .views.payment import create_payment, payment_verify
+from .views.order import OrderListView
 
 urlpatterns = [
     
     path('', HomeView.as_view(), name='home'),
     path('about', about),
-    path('contact-us', contactus),
+    path('contactus', contactus),
     path('enquiry', enquiry),
     path('search', search, name='search'),
     path('signup', SignupView.as_view()),
@@ -33,5 +34,9 @@ urlpatterns = [
     path('logout', logout_view, name='logout'),
     path('product/<str:slug>', ProductDetailView.as_view()),
     path('checkout/<str:slug>', checkout, name='checkout'),
-    path('payment/<str:slug>', create_payment, name='creat_payment'),
+    path('payment/verify', payment_verify, name='verify_payment'),
+    path('payment/<str:slug>', create_payment, name='create_payment'),
+    path('orders', OrderListView, name='orders'),
+    
+    
 ]

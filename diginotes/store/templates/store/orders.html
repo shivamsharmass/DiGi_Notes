@@ -1,0 +1,32 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<br>
+<div class="container">
+    <div>
+        <div class="alert">
+            <h1>My Courses</h1>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{order.product.name}}</td>
+                <td><a class="btn btn-success btn-sm" href="{{order.product.file.url}}" download>Download</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    
+</div>
+
+{% endblock %}

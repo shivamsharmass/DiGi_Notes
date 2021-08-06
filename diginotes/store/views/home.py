@@ -54,20 +54,20 @@ def search(request):
         if len(prod) != 0:
             allprods.append([prod, range(1, nSlides), nSlides])
     
-    context = {
-        'allprods': allprods, 'msg' : ''
-    }
-    if len(allprods) == 0 or len(query)<4:
-        context = {'msg': 'Please make sure to enter relevant search query'}
-    return render(request, template_name='store/search.html', context=context)
+    # context = {
+    #     'allprods': allprods, 'msg' : ''
+    # }
+    # if len(allprods) == 0 or len(query)<4:
+    #     context = {'msg': 'Please make sure to enter relevant search query'}
+    return render(request, template_name='store/search.html')
 
 def about(request):
-    return HttpResponse("About Page")
+    return render(request, template_name='store/about.html')
 
 def contactus(request):
-    return HttpResponse("Contact us Page")
+    return render(request, template_name='store/contactus.html')
 
 def enquiry(request):
-    return HttpResponse("enquiry Page")
+    return render(request, template_name='store/enquiry.html')
 
 
