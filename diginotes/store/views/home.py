@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import FormView
@@ -5,6 +6,7 @@ from store.models import Category, Product
 from math import ceil
 from django.views.generic import ListView
 from django import template
+from django.core.paginator import Paginator
 
 
 #from django.views import View
@@ -17,21 +19,24 @@ class HomeView(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = 'products'
+    paginate_by = 8
+
 
     def get_context_data(self):
+        page = self.request.GET.get('page')
+        if page is None:
+            page = 1
         category_pk = self.request.GET.get("category")
         categories = Category.objects.all()
         if category_pk:
             products = Product.objects.filter(category= category_pk)
-            category_pk = int(category_pk)
         else:
             products = Product.objects.all()
-        context = {
+        paginator = Paginator(products , self.paginate_by)
+        return {
             'categories' : categories,
-            'products' : products,
-            'active_category' : category_pk
-            }
-        return context
+            'page_obj' : paginator.page(page),
+        }
 
      
 @register.simple_tag

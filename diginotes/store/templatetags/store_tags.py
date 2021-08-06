@@ -15,8 +15,8 @@ def get_active_class(active_category, category):
     if active_category is None:
         return ''
 
-    if int(active_category) == category:
+    if active_category == category:
         return ' active'
 
-    if int(active_category) != category:
+    if active_category != category:
         return ''

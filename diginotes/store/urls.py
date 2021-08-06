@@ -36,7 +36,7 @@ urlpatterns = [
     path('checkout/<str:slug>', checkout, name='checkout'),
     path('payment/verify', payment_verify, name='verify_payment'),
     path('payment/<str:slug>', create_payment, name='create_payment'),
-    path('orders', OrderListView, name='orders'),
+    path('orders', OrderListView.as_view(), name='orders'),
     
     
 ]
