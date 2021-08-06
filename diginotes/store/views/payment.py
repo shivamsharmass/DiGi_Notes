@@ -7,10 +7,11 @@ from django.views.decorators.csrf import csrf_exempt
 from store.models import Payment , UserProduct
 from math import floor
 from django.contrib.auth.decorators import login_required
-
-
+from diginotes.settings import RAZORPAY_KEY, RAZORPAY_SECRET, PAYMENT_CALLBACK_URL
 import razorpay
-client = razorpay.Client(auth=("rzp_test_1ykZ1WTBVrQF5T", "jiSOOiotBl9uqwpV0fs56gky"))
+
+
+client = razorpay.Client(auth=(RAZORPAY_KEY, RAZORPAY_SECRET))
 
 
         
@@ -84,7 +85,8 @@ def create_payment(request, slug):
     else:
         context = {
             'product' : product,
-            'form' : form
+            'form' : form,
+            'PAYMENT_CALLBACK_URL' : PAYMENT_CALLBACK_URL
         }
         template_name = 'store/checkout.html'
     return render(request, template_name=template_name, context=context) 

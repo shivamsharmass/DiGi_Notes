@@ -110,3 +110,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/download/'
 MEDIA_ROOT = BASE_DIR
+
+RAZORPAY_KEY = 'rzp_test_1ykZ1WTBVrQF5T'
+RAZORPAY_SECRET = 'jiSOOiotBl9uqwpV0fs56gky'
+PAYMENT_CALLBACK_URL = 'http://localhost:8000/payment/verify'
