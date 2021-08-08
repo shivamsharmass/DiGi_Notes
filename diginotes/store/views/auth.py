@@ -10,7 +10,7 @@ from django.views import View
 class SignupView(FormView):
     form_class = UserCreationForm
     template_name = 'store/signup.html'
-    sucess_url = '/'
+    success_url = 'login'
 
     def form_valid(self, form):
         form.save()

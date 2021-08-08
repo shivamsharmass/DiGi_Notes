@@ -1,6 +1,7 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+{% load static %}
 
 <div class="text-center text-light bg-dark p-5 mt-1">
 <div class="about text-center">
@@ -8,44 +9,82 @@
 </div>
 <div class="container-fluid p-5" data-aos="fade-up">
 
-    <div class="row no-gutters">
-      <div class="content col-xl-5 d-flex align-items-stretch">
-        <div class="content">
-          <h3>Voluptatem dignissimos provident quasi</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-          </p>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>About Project</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nulla eius nostrum itaque minus, facilis suscipit. Dolore sapiente, exercitationem ducimus soluta, hic placeat veritatis quo, cum nulla saepe labore odio.</p>
+          </div>
+          <div class="col">
+            <h2>Work of this site</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nulla eius nostrum itaque minus, facilis suscipit. Dolore sapiente, exercitationem ducimus soluta, hic placeat veritatis quo, cum nulla saepe labore odio.</p>
+          </div>
+          <div class="col">
+            <h2>Main Purpose</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nulla eius nostrum itaque minus, facilis suscipit. Dolore sapiente, exercitationem ducimus soluta, hic placeat veritatis quo, cum nulla saepe labore odio.</p>
+          </div>
         </div>
       </div>
-      <div class="col-xl-7 d-flex align-items-stretch">
-        <div class="icon-boxes d-flex flex-column justify-content-center">
-          <div class="row">
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-receipt"></i>
-              <h4>Corporis voluptates sit</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Ullamco laboris nisi</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-images"></i>
-              <h4>Labore consequatur</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-        </div><!-- End .content-->
-      </div>
-    </div>
+      
+    
 
   </div>
+  <div class="team">
+    <div class="container text-center">
+      <h1>Team</h1>
+    </div>
+    <div class="row">
+      <div class="col-3 me-4 ms-5">
+        <div class="card mx-4" style="width: 18rem;">
+          <img height="300px" src="{% static 'image/macaca_nigra_self-portrait_rotated_and_cropped.jpg' %}" class="card-img-top text-dark" alt="Image of Ankit">
+          <div class="card-body">
+            <p class="card-text text-dark">
+              <b>Name:</b> Ankit Sharma
+              <br>
+              <b>Student:</b> IT(4th Year)
+              <br>
+              <b>Role:</b> Database And Admin side Coding
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 me-5 ms-4">
+        <div class="card mx-5" style="width: 18rem;">
+          <img height="300px" src="{% static 'image/images.jpg' %}" class="card-img-top text-dark" alt="Image of Anshul">
+          <div class="card-body">
+            <p class="card-text text-dark">
+              <p class="card-text text-dark">
+                <b>Name:</b> Anshul Kumar Mishra
+                <br>
+                <b>Student:</b> IT(4th Year)
+                <br>
+                <b>Role:</b> Requirement Gathering and Analysis
+              </p>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 me-4 ms-5">
+        <div class="card mx-4" style="width: 18rem;">
+          <img height="300px" src="{% static 'image/2018-08-19_17.30.20.jpg' %}" class="card-img-top text-dark" alt="Image of Shivam">
+          <div class="card-body">
+            <p class="card-text text-dark">
+              <p class="card-text text-dark">
+                <b>Name:</b> Shivam Sharma
+                <br>
+                <b>Student:</b> IT(4th Year)
+                <br>
+                <b>Role:</b> Full stack Development and Designing
+              </p>
+            </p>
+          </div>
+        </div>
+      </div>
+              
+    </div>
+  </div>
+  
+
 </div>
    
 
