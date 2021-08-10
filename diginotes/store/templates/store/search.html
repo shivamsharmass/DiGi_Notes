@@ -9,7 +9,7 @@
 
   <div id="categories" class="col-2">
     
-    <div class="list-group">
+    <div class="list-group mt-4">
       <a class="list-group-item list-group-item-action {% get_active_class active_category '' %}" href="/">All Categories</a>
       {% for category in categories %}
         <a class="list-group-item list-group-item-action {% get_active_class active_category category.pk %}" href="?category={{category.pk}}">{{category.title}}</a>
@@ -22,7 +22,7 @@
     <div class="row">
       {% for product in products %}
       
-      <div class="col-3 mx-4">
+      <div class="col-3 mx-4 mt-4">
           <div class="card" style="width: 18rem;">
               <img src="{{product.thumbnail.url}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -51,12 +51,14 @@
 </div>
 {% endblock %}
 
-{% block js %}
+<!-- {% block js %}
 <script>
 
-// {% if msg|length != 0 %}
-// alert('{{msg}}');
-// window.location.href = "/"
-// {% endif %}
+{%if msg|length != 0 %}
+alert('{{msg}}');
+window.location.href="/"
+{%endif%}
+
  </script>
- {% endblock %}
+ {% endblock %} -->
+

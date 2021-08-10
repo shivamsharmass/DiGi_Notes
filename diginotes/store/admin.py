@@ -1,9 +1,14 @@
 from django.contrib import admin
-from .models import Product, Category, Payment, UserProduct
+from .models import ContactUs, Product, Category, Payment, UserProduct
 from math import floor
 from django.db.models import F
 
 # Register your models here.
+
+class ContactUsAdmin(admin.ModelAdmin):
+    pass
+
+
 class ProductAdmin(admin.ModelAdmin):
     model = Product
     list_display=['name', 'category', 'get_price', 'get_discount', 'get_sale_price', 'active']
@@ -83,3 +88,4 @@ admin.site.register(Category)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Payment)
 admin.site.register(UserProduct)
+admin.site.register(ContactUs, ContactUsAdmin)

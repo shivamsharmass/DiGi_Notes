@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import EmailField
 
 # Create your models here.
 
@@ -48,3 +49,12 @@ class UserProduct(models.Model):
 
     def __str__(self):
         return f'user={self.user}, product={self.product}'
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return 'Message from ' + self.name

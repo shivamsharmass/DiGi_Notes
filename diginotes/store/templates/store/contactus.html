@@ -44,7 +44,8 @@
           </div>
 
           <div class="col-lg-6 text-light bg-dark">
-            <form method="post" class="text-light bg-dark">
+            <form method="post" class="text-light bg-dark" action="/contactus">
+              {% csrf_token %}
               <div class="row">
                 <div class="col form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
