@@ -9,14 +9,14 @@ def sale_price(price, discount):
 
 @register.simple_tag
 def get_active_class(active_category, category):
-    if active_category is None and category == '':
+    if active_category is '' and category == '':
         return ' active'
 
-    if active_category is None:
+    if active_category is '':
         return ''
 
-    if active_category == category:
+    if int(active_category) == category:
         return ' active'
 
-    if active_category != category:
+    if int(active_category) != category:
         return ''
